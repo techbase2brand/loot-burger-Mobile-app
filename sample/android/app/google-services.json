@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "265987595409",
+    "project_id": "loot-burger",
+    "storage_bucket": "loot-burger.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:265987595409:android:e6b7eb5c3dff04257a7330",
+        "android_client_info": {
+          "package_name": "com.LootBurger"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "265987595409-19uqau04cbodpiq5ubqavt6139951nl4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.LootBurger",
+            "certificate_hash": "5a449b542212a64578dea6aa6c8b983ebfb94386"
+          }
+        },
+        {
+          "client_id": "265987595409-ddj5gek714ka3defc3l9hlrd2hj208u6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.LootBurger",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "265987595409-rh95ktk9o23nc7h97s3aqkivktisabed.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3GOy9coP2H0w8-mZOdco5YC2S5aAWoXA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "265987595409-rh95ktk9o23nc7h97s3aqkivktisabed.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
