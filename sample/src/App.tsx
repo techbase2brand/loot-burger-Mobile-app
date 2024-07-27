@@ -43,7 +43,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ThemeProviders } from './context/ThemeContext';
 import { useThemes } from '../src/context/ThemeContext';
 import { lightColors, darkColors } from '../src/constants/Color';
-
+import OrderTrackingScreen from '../src/screens/OrderTrackingScreen'
 const colorScheme = ColorScheme.web;
 const config: Configuration = {
   colorScheme,
@@ -488,6 +488,14 @@ function ProfileStack() {
           headerShown: false,
         })}
       />
+        <Stack.Screen
+        name="OrderTrackingScreen"
+        component={OrderTrackingScreen}
+        options={() => ({
+          headerShown: false,
+        })}
+      />
+
     </Stack.Navigator>
   );
 }

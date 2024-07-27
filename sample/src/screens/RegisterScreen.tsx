@@ -211,7 +211,7 @@ const RegisterScreen = ({ navigation }: { navigation: any }) => {
     } catch (error) {
       setLoading(false)
       console.error('Google sign up error:', error);
-      Toast.show("User All ready registered please login ")
+      // Toast.show("User All ready registered please login ")
       logEvent(`Google sign up error:${error}`);
     }
   };
@@ -358,6 +358,7 @@ const RegisterScreen = ({ navigation }: { navigation: any }) => {
       throw error;
     }
   };
+
   const checkIfUserIsRegistered = async (email) => {
     // console.log("check user exit email ", email)
     try {
@@ -401,7 +402,6 @@ const RegisterScreen = ({ navigation }: { navigation: any }) => {
     logEvent('Show ConfirmPassword icon click on Register Screen');
     setShowConfirmPassword(!showConfirmPassword);
   };
-
 
   const handleNotificationTrigger = () => {
     // Trigger notification logic here

@@ -137,7 +137,7 @@ const LoginScreen = ({ navigation }: { navigation: any }) => {
         // Check if any customer matches the provided email
         const isRegistered = customers.some(customer => {
           if (customer.email === email) {
-            // console.log('Customer found:', customer);
+            console.log('Customer found:', customer);
             return true;
           }
           return false;
@@ -344,7 +344,7 @@ const LoginScreen = ({ navigation }: { navigation: any }) => {
       const { email, givenName, familyName } = user;
 
       const isRegistered = await checkIfUserIsRegistered(user.email)
-
+      console.log(isRegistered)
       if (isRegistered) {
         Toast.show(`User LoggedIn Succesfully`);
       }

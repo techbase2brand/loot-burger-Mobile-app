@@ -255,7 +255,7 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
   },
   addToCartButtonText: {
-    fontSize: 12,
+    fontSize: 10,
     lineHeight: 18,
     color: redColor,
     fontWeight: '700',

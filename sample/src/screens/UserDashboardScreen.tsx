@@ -121,6 +121,9 @@ const UserDashboardScreen = () => {
     Toast.show(`${quantity} item${quantity !== 1 ? 's' : ''} added to cart`);
     setLoadingProductId(null);
   };
+  const handleTrackOrder = (orderId, orderStatus) => {
+    navigation.navigate('OrderTrackingScreen', { orderId, orderStatus });
+  };
 
   return (
     <KeyboardAvoidingView
@@ -137,11 +140,9 @@ const UserDashboardScreen = () => {
                 data={ordersList}
                 keyExtractor={(item) => item.id.toString()}
                 renderItem={({ item }) => {
-                  // console.log("response.data.orders", ordersList);
+                  console.log("response.data.orders", ordersList);
                   return (
                     <View style={{ padding: spacings.large }}>
-                      {/* <Text style={styles.itemText}>Order ID: {item.id}</Text>
-                    <Text style={styles.itemText}>Order Total: {item.total ? item.total : item.total_price}</Text> */}
                       {item?.line_items?.map((Item, index) => {
                         return (
                           <View key={index} style={{ marginVertical: 10, padding: spacings.large, borderWidth: 1, width: "100%", borderRadius: 10 }}>
@@ -167,7 +168,7 @@ const UserDashboardScreen = () => {
                                 <Text style={[styles.itemText, { color: colors.blackColor }]}>{Item.title}</Text>
                               </View>
                             </View>
-                            <View style={[flexDirectionRow]}>
+                            {Item?.variant_title && <View style={[flexDirectionRow]}>
                               <View style={{ width: "25%" }}>
                                 <Text style={[styles.itemText, { color: colors.blackColor }]}>Variant</Text>
                               </View>
@@ -177,7 +178,7 @@ const UserDashboardScreen = () => {
                               <View style={{ width: "75%" }}>
                                 <Text style={[styles.itemText, { color: colors.blackColor }]}>{Item?.variant_title}</Text>
                               </View>
-                            </View>
+                            </View>}
                             <View style={[flexDirectionRow]}>
                               <View style={{ width: "25%" }}>
                                 <Text style={[styles.itemText, { color: colors.blackColor }]}>Quantity</Text>
@@ -200,6 +201,9 @@ const UserDashboardScreen = () => {
                                 <Text style={[styles.itemText, { color: colors.blackColor }]}>{Item.price}</Text>
                               </View>
                             </View>
+                            <Pressable style={[styles.button, { alignSelf: "flex-end" }]} onPress={() => handleTrackOrder(item.id, "Out Of Delivery")}>
+                              <Text style={styles.buttonText}>Track Order</Text>
+                            </Pressable>
                           </View>
                         );
                       })}
@@ -213,6 +217,9 @@ const UserDashboardScreen = () => {
               <Pressable style={styles.button} onPress={() => onPressContinueShopping(ORDERS)}>
                 <Text style={[styles.buttonText, textAlign]}>Continue Shopping</Text>
               </Pressable>
+              {/* <Pressable style={styles.button} onPress={() => handleTrackOrder("12345678", "Out Of Delivery")}>
+                <Text style={styles.buttonText}>Track Order</Text>
+              </Pressable> */}
             </View>)
         }
         {

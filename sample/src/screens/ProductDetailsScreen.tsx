@@ -52,62 +52,6 @@ function ProductDetailsScreen({ navigation, route }: Props) {
     logEvent('Product Details Screen Initialized');
   }, [])
 
-  // useEffect(() => {
-  //   const fetchRelatedProducts = async () => {
-  //     try {
-  //       // Constructing the tags string from array
-
-  //       const tagsString = tags.join(',');
-  //       const excludedProductTitle = route?.params?.product.title;
-  //       const response = await axios.get(`https://${STOREFRONT_DOMAIN}/admin/api/2024-04/products.json?tags=${tagsString}`, {
-  //         headers: {
-  //           'X-Shopify-Access-Token': ADMINAPI_ACCESS_TOKEN,
-  //           'Content-Type': 'application/json',
-  //         },
-  //       });
-
-  //       if (response.data.products) {
-  //         // console.log("Response data:", response?.data);
-
-  //         // Logging each product's tags for verification
-  //         // response.data.products.forEach((product, index) => {
-  //         //   console.log(`Product ${index + 1} tags:`, product.tags);
-  //         // });
-
-  //         // Filtering products based on tags
-  //         const filteredProducts = response?.data?.products?.filter(product => {
-  //           const excludeProduct = tags.includes(product?.title) || product?.title === excludedProductTitle;
-  //           const includeProduct = tags.some(tag => product?.tags?.includes(tag) || product?.title?.includes(tag));
-  //           if (!excludeProduct && includeProduct) {
-  //             // console.log(`Included Product: ${product.title}`);
-  //             return true;
-  //           } else {
-  //             // console.log(`Excluded Product: ${product.title}`);
-  //             return false;
-  //           }
-  //         });
-  //         // const filteredProducts = response.data.products.filter(product =>
-  //         //   tags.some(tag => product.tags.includes(tag))
-  //         // );
-
-  //         // console.log("Filtered Products:", filteredProducts);
-
-  //         // Update state with filtered products
-  //         setRelatedProducts(filteredProducts);
-  //       }
-  //     } catch (error) {
-  //       console.log('Error fetching related products:', error);
-  //     }
-  //   };
-
-  //   if (tags.length > 0) {
-  //     fetchRelatedProducts();
-  //   } else {
-  //     // Clear related products when tags are empty
-  //     setRelatedProducts([]);
-  //   }
-
-  // }, [tags]);
   useEffect(() => {
     const fetchRelatedProducts = async () => {
       try {
@@ -334,10 +278,6 @@ function ProductDetails({
         android: {
           packageName: 'com.LootBurger',
         },
-        // ios: {
-        //   appStoreId: '123456789',
-        //   bundleId: 'com.deepLinkingProjectBundleId',
-        // },
       }, dynamicLinks.ShortLinkType.DEFAULT)
       console.log('link:', link)
       return link
@@ -614,7 +554,7 @@ function ProductDetails({
       </ScrollView>
       <View style={[flexDirectionRow, positionAbsolute, justifyContentSpaceBetween, { alignItems: "baseline", bottom: 4, width: wp(100), zIndex: 1, backgroundColor: themecolors.whiteColor, height: hp(10) }]}>
         {getInventoryQuantity() > 0 && <View>
-          <Text style={{ padding: spacings.large, color: themecolors.redColor, fontSize: style.fontSizeLarge.fontSize }}>{QUNATITY}:</Text>
+          <Text style={{ padding: spacings.large, color: themecolors.redColor, fontSize: style.fontSizeMedium.fontSize }}>{QUNATITY}:</Text>
           <View style={[styles.quantityContainer, flexDirectionRow, alignJustifyCenter]}>
             <TouchableOpacity onPress={decrementQuantity}>
               <Text style={[styles.quantityButton, borderRadius5, textAlign, { color: themecolors.blackColor, borderColor: themecolors.blackColor }]}>-</Text>

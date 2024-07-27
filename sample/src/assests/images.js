@@ -37,9 +37,7 @@ export const WHITE_MYADDRESS_IMAGE = require('./whiteAddress.png');
 export const WHITE_FILTER_ICON = require('./whiteFilter.png');
 export const WHITE_USER_IMAGE = require('./whiteUser.png');
 
-// export const GIF_ONE=require('./gif/Gif.gif');
-// export const GIF_TWO=require('./gif/Sequence.gif');
-
+export const DELIVER_BOY_IMAGE = require('./delivery-boy.png');
 
 export const LOVE_DRINK_LOGO = require('./loveDrinks.png');
 export const HEADER_LOGO = require('./AppLogo.png');

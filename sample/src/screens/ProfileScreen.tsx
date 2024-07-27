@@ -86,7 +86,6 @@ const ProfileScreen = ({ navigation }: { navigation: any }) => {
 
   //for get customer Profile
   const fetchUserProfile = async (id) => {
-    // console.log("fetchUserProfile", id)
     try {
       const response = await axios.get(`https://${STOREFRONT_DOMAIN}/admin/api/2024-01/customers/${id}.json`, {
         headers: {
@@ -94,7 +93,7 @@ const ProfileScreen = ({ navigation }: { navigation: any }) => {
           'Content-Type': 'application/json',
         },
       });
-      // console.log('Response fetchUserProfileDatar:', response.data);
+      console.log('Response fetchUserProfileData:', response.data);
       const customer = response?.data?.customer;
       setUserName(`${customer.first_name} ${customer.last_name}`);
     } catch (error) {
@@ -111,7 +110,6 @@ const ProfileScreen = ({ navigation }: { navigation: any }) => {
   //for get customer orders
   const fetchOrders = async (id) => {
     try {
-      // console.log
       const response = await axios.get(
         `https://${STOREFRONT_DOMAIN}/admin/api/2024-04/orders.json?customer_id=${id}`,
         {

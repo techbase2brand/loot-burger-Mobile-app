@@ -99,7 +99,7 @@ function CartScreen({ navigation }: { navigation: any }): React.JSX.Element {
   if (error) {
     console.error("Error fetching cart:", error);
     return (
-      <ImageBackground source={isDarkMode ? BACKGROUND_IMAGE : ""} style={[styles.loading, alignJustifyCenter, flex, { backgroundColor: themecolors.whiteColor }]}>
+      <ImageBackground source={isDarkMode ? "" : BACKGROUND_IMAGE} style={[styles.loading, alignJustifyCenter, flex, { backgroundColor: themecolors.whiteColor }]}>
         <Text style={[styles.loadingText, { color: themecolors.blackColor }]}>
           {AN_ERROR_OCCURED}
         </Text>
@@ -112,7 +112,7 @@ function CartScreen({ navigation }: { navigation: any }): React.JSX.Element {
 
   if (loading) {
     return (
-      <ImageBackground source={isDarkMode ? BACKGROUND_IMAGE : ""} style={[styles.loading, alignJustifyCenter, flex, { backgroundColor: themecolors.whiteColor }]}>
+      <ImageBackground source={isDarkMode ? "" : BACKGROUND_IMAGE} style={[styles.loading, alignJustifyCenter, flex, { backgroundColor: themecolors.whiteColor }]}>
         <Header
           backIcon={true}
           navigation={navigation}
@@ -127,7 +127,7 @@ function CartScreen({ navigation }: { navigation: any }): React.JSX.Element {
 
   if (!data || !data.cart || data?.cart?.lines?.edges?.length === 0 || !cartId) {
     return (
-      <ImageBackground source={isDarkMode ? BACKGROUND_IMAGE : ""} style={[styles.loading, alignJustifyCenter, flex, { backgroundColor: themecolors.whiteColor }]}>
+      <ImageBackground source={isDarkMode ? "" : BACKGROUND_IMAGE} style={[styles.loading, alignJustifyCenter, flex, { backgroundColor: themecolors.whiteColor }]}>
         <Header
           backIcon={true}
           navigation={navigation}
@@ -217,7 +217,7 @@ function CartScreen({ navigation }: { navigation: any }): React.JSX.Element {
   const taxAmount = data?.cart?.cost?.totalTaxAmount ? parseFloat(price(data?.cart?.cost?.totalTaxAmount)) : 0;
   const sum = addValues(totalAmount, taxAmount);
   return (
-    <ImageBackground source={isDarkMode ? BACKGROUND_IMAGE : ""} style={[styles.loading, alignJustifyCenter, flex, { backgroundColor: themecolors.whiteColor }]}>
+    <ImageBackground source={isDarkMode ? "" : BACKGROUND_IMAGE} style={[styles.loading, alignJustifyCenter, flex, { backgroundColor: themecolors.whiteColor }]}>
       <SafeAreaView>
         <Header
           backIcon={true}

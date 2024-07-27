@@ -1,5 +1,5 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import { View, Image, Text, StyleSheet, FlatList, TouchableOpacity, ScrollView, Pressable, KeyboardAvoidingView, ActivityIndicator, Alert } from 'react-native';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { View, Image, Text, StyleSheet, FlatList, TouchableOpacity, ScrollView, Pressable, KeyboardAvoidingView, ActivityIndicator, Alert, Dimensions, Animated } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp, } from '../utils';
 import { whiteColor, blackColor, grayColor, redColor, lightGrayOpacityColor } from '../constants/Color'
 import { spacings, style } from '../constants/Fonts';
@@ -55,6 +55,9 @@ const HomeScreenFood = ({ navigation }: { navigation: any }) => {
   //dummy Gif
   const GIF = { id: 1, gif: "https://firebasestorage.googleapis.com/v0/b/ecommerceapp-34078.appspot.com/o/2894881-uhd_3840_2160_24fps.gif?alt=media&token=76226ea4-b429-4f57-a6a1-89eed9899bc8", title: "Indian Whiskey" };
 
+  const screenWidth = Dimensions.get('window').width;
+  const translateX = useRef(new Animated.Value(screenWidth)).current;
+
   // const collections = collectionData?.collections?.edges || [];
   const collections = shopifyCollection || [];
   const customItem = { id: 'more', title: 'More', image: MORE_DOTS_IMAGE };
@@ -69,6 +72,16 @@ const HomeScreenFood = ({ navigation }: { navigation: any }) => {
   useEffect(() => {
     logEvent('Home Screen Initialized')
   }, [])
+
+  useEffect(() => {
+    Animated.loop(
+      Animated.timing(translateX, {
+        toValue: -screenWidth,
+        duration: 5000, // Adjust the duration as needed
+        useNativeDriver: true,
+      })
+    ).start();
+  }, [translateX]);
 
   //AllDeliciousProduct
   useEffect(() => {
@@ -147,7 +160,7 @@ const HomeScreenFood = ({ navigation }: { navigation: any }) => {
       myHeaders.append("X-Shopify-Access-Token", ADMINAPI_ACCESS_TOKEN);
       const graphql = JSON.stringify({
         query: `query MyQuery {
-        collection(id: "gid://shopify/Collection/331148394649") {
+        collection(id: "gid://shopify/Collection/483994599738") {
           products(first: 4) {
             nodes {
               id
@@ -395,8 +408,8 @@ const HomeScreenFood = ({ navigation }: { navigation: any }) => {
         item?.title.toLowerCase() === selectedItem.toLowerCase()
       );
       filteredItems.forEach((item) => {
-        // console.log(`Items for ${item.title}:`);
-        // console.log(item.items);
+        console.log(`Items for ${item.title}:`);
+        console.log(item.items);
 
         let matchedCollectionsArray = [];
         item?.items?.forEach(selectedItem => {
@@ -561,7 +574,20 @@ const HomeScreenFood = ({ navigation }: { navigation: any }) => {
         </ScrollView>  */}
         <ScrollView showsVerticalScrollIndicator={false} >
           <View style={[alignJustifyCenter, { width: wp(100), height: hp(5), backgroundColor: colors.blackColor }]}>
-            <Text style={[styles.menuText, { color: colors.whiteColor }]} >Free Shipping All Orders</Text>
+            {/* <Text style={[styles.menuText, { color: colors.whiteColor }]} >Free Shipping All Orders</Text> */}
+            <Animated.Text
+              style={[
+                styles.marqueeText,
+                {
+                  transform: [{ translateX }],
+                  color: colors.whiteColor,
+                  fontWeight: '300', // Adjust if you have a fontWeightThin style
+                  fontSize: 14,
+                },
+              ]}
+            >
+              Free Shipping on All Orders
+            </Animated.Text>
           </View>
           <View style={[{ width: wp(100), height: "auto", marginTop: 5, paddingHorizontal: spacings.large }, flexDirectionRow]}>
             <FlatList
@@ -579,7 +605,7 @@ const HomeScreenFood = ({ navigation }: { navigation: any }) => {
                     >
                       <Image
                         source={
-                          item.id === 'more' ? item.image : { uri: item.image.url }
+                          item.id === 'more' ? item.image : { uri: item?.image?.url }
                         }
                         style={
                           item.id === 'more'
@@ -900,6 +926,11 @@ const styles = StyleSheet.create({
     left: 0,
     width: '100%',
     padding: 10,
+  },
+  marqueeText: {
+    position: 'absolute',
+    width: '100%',
+    textAlign: 'center',
   },
 
 

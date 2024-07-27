@@ -65,7 +65,7 @@ function CatalogScreen({ navigation }: Props) {
       setCollectionsFetched(true);
     };
     fetchInitialData()
-    const CollectionId = (selectedItem === "Food" ? "gid://shopify/Collection/331148034201" : "gid://shopify/Collection/331148034201");
+    const CollectionId = (selectedItem === "Food" ? "gid://shopify/Collection/482348859706" : "gid://shopify/Collection/482348859706");
     const CollectionName = (selectedItem === "Food" ? "Burgers" : "Collections");
     onPressCollection(CollectionId, CollectionName)
     setSelectedCollectionId(CollectionId)
@@ -280,7 +280,7 @@ function CatalogScreen({ navigation }: Props) {
         <View style={[styles.productDetailsBox]}>
           {!loading ? <>
             <Text style={{ fontWeight: style.fontWeightThin1x.fontWeight, color: themecolors.blackColor, fontSize: style.fontSizeNormal2x.fontSize, padding: spacings.large }}>
-              <Text style={{ fontWeight: style.fontWeightMedium1x.fontWeight, color: themecolors.blackColor, fontSize: style.fontSizeNormal2x.fontSize, padding: spacings.large }}>{products.length} items
+              <Text style={{ fontWeight: style.fontWeightMedium1x.fontWeight, color: themecolors.blackColor, fontSize: style.fontSizeNormal2x.fontSize, padding: spacings.large }}>{products?.length} items
               </Text> in {collectionTitle}</Text>
             <FlatList
               data={products}

@@ -66,7 +66,7 @@ const AccountDetails = ({ navigation }: { navigation: any }) => {
             'Content-Type': 'application/json',
           },
         });
-        // console.log('Response data:', response.data);
+        console.log('Response data:', response.data);
         const customer = response.data.customer;
         setFullName(`${customer.first_name} ${customer.last_name}`);
         setEmail(customer.email);
